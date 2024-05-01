@@ -1,7 +1,6 @@
 """FastAPI server."""
 
-
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import ORJSONResponse
 
@@ -22,7 +21,12 @@ app.add_middleware(
     allow_origins=APIConfig.CORS_ORIGINS,
 )
 
-@app.get(f"/{APIConfig.VERSION}/", status_code=200, response_class=ORJSONResponse,)
+
+@app.get(
+    f"/{APIConfig.VERSION}/",
+    status_code=status.HTTP_200_OK,
+    response_class=ORJSONResponse,
+)
 def home(request: Request) -> ORJSONResponse:
     """Home route."""
     return ORJSONResponse(content={"content": "successful response."})
