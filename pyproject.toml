@@ -100,7 +100,7 @@ select = [
     "RUF",
 ]
 
-ignore = ["UP038"]
+ignore = ["UP038", "D104"]
 
 [tool.ruff.lint.pydocstyle]
 
